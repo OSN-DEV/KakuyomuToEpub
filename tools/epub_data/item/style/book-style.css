@@ -1,0 +1,178 @@
+@charset "UTF-8";
+@import "base-style.css";
+/*
+
+body {
+	background			: transparent;
+	font-family			: serif-ja, serif;
+	font-size			: 100%;
+	letter-spacing		: 0.8pt;
+	line-height			: 1.8em;
+	margin				: 0;
+	padding				: 1em;
+	text-align			: justify;
+	vertical-align		: baseline;
+	white-space			: normal;
+	word-spacing		: normal;
+	word-wrap			: break-word;
+
+	-webkit-line-break	: normal;
+	-webkit-word-break	: normal;
+	-webkit-hyphens		: auto;
+	-webkit-text-underline-position: under left;
+
+	-epub-line-break	: normal;
+	-epub-word-break	: normal;
+	-epub-hyphens		: auto;
+	-epub-text-underline-position: under left;
+}
+
+div,p {
+	display	: block;
+	width	: auto;
+	height	: auto;
+	margin	: 0.3em;
+	padding	: 0;
+}
+
+body,div,p {
+	text-indent	: 0;
+}
+
+body > p,
+div  > p {
+	text-indent : inherit;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	display		: block;
+	margin		: 0;
+	font-size	: 100%;
+	font-weight	: inherit;
+	background	: transparent;
+}
+
+h1 {
+	
+	font-family		: sans-serif;
+}
+
+h2 {
+	
+	font-family		: sans-serif;
+}
+
+h3 {
+	padding-left	: 0.5em !important;
+	font-family		: sans-serif;
+}
+
+a {
+	font-style		: inherit;
+	font-weight		: inherit;
+	text-decoration	: inherit;
+	color			: #3E9DD7;
+	background		: transparent;
+}
+
+code {
+	padding-left	: 0.2em;
+	padding-right	: 0.2em;
+}
+
+blockquote {
+	border			: solid 1px #CCC;
+	margin			: 0;
+	padding			: 1em;
+}
+
+dl {
+	margin			: 0;
+}
+
+dt {
+}
+
+dd {
+	margin-left		: 1em;
+	margin-bottom	: 0.5em;
+}
+
+li {
+	margin-right	: 1em;
+	margin-bottom	: 0.5em;
+}
+
+
+p.noindent {
+	margin-bottom	: 1em;
+}
+
+p.indent {
+	text-indent		: 1em;
+	margin-bottom	: 1em;
+}
+
+.annotation {
+	font-size	:smaller;
+}
+
+.bg_back { background-color:black;}
+.fg_white { color:white; }
+
+
+.bold {
+	padding-left	: 0.2em;
+	padding-right	: 0.2em;
+	font-weight		: bold;
+}
+
+
+.center { text-align	:center; }
+.right { text-align		:right; }
+
+.height_0em05 { height: 0.5em; }
+
+.height_1em { height: 1em; }
+
+.ls_1em { letter-spacing :1em; }
+
+.tsize_0em75 { font-size:0.75em; }
+
+.pd_0em5 { padding : 0.5em; }
+
+.cmd {
+	padding				: 0.4em;
+	background-color	: #555555;
+	color				: #EEEEEE;
+	font-weight			: bold;
+}
+
+
+.figure {
+	text-align	:center;
+	color		:#AAAAAA;
+	margin		:0;
+	padding		:0;
+}
+
+.hanging {
+	margin-left		: 1em;
+	text-indent		: -1em;
+}
+
+
+
+.image {
+	width: 100%;
+	margin: 1em auto 1em auto;
+}
+
+
+.italic {
+	padding-left	: 0.2em;
+	padding-right	: 0.2em;
+	font-style		: italic;
+}
+*/
+

@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+/* ***** Basic ****************************** */
+body {
+	background			: transparent;
+	font-family			: 游明朝, serif-ja, serif;
+	font-size			: 100%;
+	letter-spacing		: 0.8px;
+	line-height			: 1.8em;
+	margin				: 0em;
+	padding				: 0em;
+	vertical-align		: baseline;
+	white-space			: normal;
+	word-spacing		: normal;
+	word-wrap			: break-word;
+}
+
+
+
+h3 {
+	color				: #3E2723;
+	font-size			: 105%;
+	font-weight			: bold;
+	margin-top			: 1.5em;
+}
+
+h4 {
+	border-left			: solid 10px #607D8B;
+	color				: #3E2723;
+	font-size			: 100%;
+	font-weight			: bold;
+	padding				: 0.3em 0 0.3em 0.5em;
+	margin-top			: 2em;
+}
+
+p {
+	text-indent			: 1em;
+	margin				: 0.3em;
+}
+
+a {
+	text-decoration		: none;
+}
+
+/* ***** Basic Horizontal ****************************** */
+.hltr h1 {
+	background-color	: #CFD8DC;
+	border-left			: solid 10px #607D8B;
+	color				: #3E2723;
+	font-size			: 120%;
+	font-weight			: bold;
+	padding				: 0.3em 0 0.3em 0.5em;
+	margin-top			: 2em;
+}
+
+.hltr h2 {
+	border-left			: solid 10px #607D8B;
+	color				: #3E2723;
+	font-size			: 110%;
+	font-weight			: bold;
+	padding				: 0.3em 0 0.3em 0.5em;
+	margin-top			: 1.7em;
+}
+
+.hltr h1+p { text-indent			: 0; }
+.hltr h2+p { text-indent			: 0; }
+.hltr h3+p { text-indent			: 0; }
+
+
+/* ***** Basic Vertical ****************************** */
+.vrtl h1 {
+	font-size		: 1.5em;
+	line-height		: 1.75;
+	margin-left		: 2em;
+	margin-right	: 2em;
+	padding-top		: 2em;
+}
+
+.vrtl h2 {
+	font-size		: 1.25em;
+	line-height		: 1.5;
+	margin-left		: 2em;
+	margin-right	: 2em;
+	padding-top		: 2em;
+}
+
+.vrtl p {
+	margin-right	: 0.3em;
+}
+
+.vrtl div.spacer {
+	margin-right	: 1em;
+
+}
+
+.vrtl hr {
+	margin : 1em;
+}
+
+/* ***** Pseudo-elements ****************************** */
+body > *:first-child {
+	margin-top			: 0;
+}
+
+h1+h2 {	margin-top: 0em; }
+h2+h3 {	margin-top: 0em; }
+
+
+
+/* ***** Class ****************************** */
+body.p-cover {
+	margin		: 0;
+	padding		: 0;
+	text-align	: center;
+}
+
+
+.no-indent {
+	text-indent			: 0;
+}
+
+.tcy {
+	-webkit-text-combine: horizontal
+}
+
+.vrtl {
+	  -webkit-writing-mode	: vertical-rl;
+	  -epub-writing-mode	: vertical-rl;
+}
+
+.red {
+	color				: red;
+}
+
+.center { text-align : center; }
+.right  { text-align : right; }
+
+.font-size-l { font-size : 105%; }
+.font-size-ll { font-size : 110%; }
+
+
+h2.character { 
+	margin-left		: 0; 
+}
+
+
+table{
+	margin			: 0;
+	padding			: 0;
+}
+
+table.character {
+	margin			: 0;
+	padding			: 0;
+}
+
+th {
+	font-weight		: normal;
+	text-align		: left;
+	vertical-align	: top;
+	white-space		: nowrap;
+}
+
+td {
+	vertical-align	:top;
+	text-align		:left;
+}
