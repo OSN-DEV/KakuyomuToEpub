@@ -5,22 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KakuyomToEpub"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300" WindowStartupLocation="CenterScreen"  DragEnter="Window_DragEnter" Drop="Window_Drop" AllowDrop="True" Loaded="Window_Loaded">
+        Title="MainWindow" Height="200" Width="800" WindowStartupLocation="CenterScreen"  DragEnter="Window_DragEnter" Drop="Window_Drop" AllowDrop="True" Loaded="Window_Loaded">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="145*"/>
+            <ColumnDefinition Width="49*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Row="0" Name="cContainer">
+        <StackPanel Orientation="Vertical" Grid.Row="0" Name="cContainer" Grid.ColumnSpan="4">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Output Dir : " Width="80"/>
-                <TextBox Name="cOutput" Width="220"  Background="#FFF3F2F2"/>
+                <TextBox Name="cOutput" Width="720"  Background="#FFF3F2F2"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Title : " Width="80"/>
-                <TextBox  Name="cTitle"  Width="220" Background="#FFF3F2F2"/>
+                <TextBox  Name="cTitle"  Width="720" Background="#FFF3F2F2"/>
             </StackPanel>
         </StackPanel>
-        <Label Grid.Row="0" Name="cProgress" Visibility="Collapsed" />
+        <Label Grid.Row="0" Name="cProgress" Visibility="Collapsed" Grid.ColumnSpan="4" />
     </Grid>
 </Window>

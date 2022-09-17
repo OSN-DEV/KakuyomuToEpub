@@ -13,7 +13,9 @@ namespace KakuyomToEpub {
         private class TocInfo {
             public string Title;
             public string Page;
-            public TocInfo(string title, int page) {
+            public int Level;
+            public TocInfo(int level, string title, int page) {
+                this.Level = level;
                 this.Title = title;
                 this.Page = page.ToString("000");
             }
@@ -74,6 +76,11 @@ namespace KakuyomToEpub {
                     while (!src.Eof) {
                         var line = src.ReadLine().Trim();
                         if (line.EndsWith("は大見出し］")) {
+                            var pos = line.IndexOf("「");
+                            var title = line.Substring(pos + 1);
+                            pos = title.LastIndexOf("」");
+                            title = title.Substring(0, pos);
+                            tocs.Add(new TocInfo(1, title, index));
                             continue;
                         }
                         if (line == "［＃改ページ］") {
@@ -92,8 +99,8 @@ namespace KakuyomToEpub {
                             var title = line.Substring(pos+1);
                             pos = title.LastIndexOf("」");
                             title = title.Substring(0, pos );
-                            tocs.Add(new TocInfo(title, index));
-                            dest.WriteLine($"<h1>{this.ConvertText(title)}</h1>");
+                            tocs.Add(new TocInfo(2, title, index));
+                            dest.WriteLine($"<h1>{this.ConvertText(title, true)}</h1>");
                             hasBlank = false;
                             isFirst = true;
                             continue;
@@ -201,11 +208,28 @@ namespace KakuyomToEpub {
                 dest.WriteLine("<body>");
                 dest.WriteLine("<nav epub:type=\"toc\" id=\"toc\">");
                 dest.WriteLine("<h1>目次</h1>");
+
+                bool isFirst = true;
+                // 大見出しの直後は必ず中見出しである前提
                 dest.WriteLine("<ol>");
                 foreach (var toc in tocs) {
-                    dest.WriteLine($"    <li><a href=\"xhtml/p-{toc.Page}.xhtml\">{toc.Title}</a></li>");
+                    if (toc.Level == 1) {
+                        if (isFirst) {
+                            isFirst = false;
+                        } else {
+                            dest.WriteLine($"      </ol>");
+                            dest.WriteLine($"   </li>");
+                        }
+                        dest.WriteLine($"    <li><span>{toc.Title}</span>");
+                        dest.WriteLine($"      <ol>");
+                        continue;
+                    } 
+                    dest.WriteLine($"      <li><a href=\"xhtml/p-{toc.Page}.xhtml\">{this.ConvertText(toc.Title, true)}</a></li>");
                 }
+                dest.WriteLine("  </ol>");
+                dest.WriteLine("  </li>");
                 dest.WriteLine("</ol>");
+
                 dest.WriteLine("</nav>");
                 dest.WriteLine("</body>");
                 dest.WriteLine("</html>");
@@ -257,20 +281,75 @@ namespace KakuyomToEpub {
             return result.ToString();
         }
 
-        private string ConvertText(string line) {
-            return line
-                .Replace("0", "０")
-                .Replace("1", "１")
-                .Replace("2", "２")
-                .Replace("3", "３")
-                .Replace("4", "４")
-                .Replace("5", "５")
-                .Replace("6", "６")
-                .Replace("7", "７")
-                .Replace("8", "８")
-                .Replace("9", "９")
+        private string ConvertText(string line,  bool skipEnd = false) {
+            //var baseText =  line
+            //    .Replace("0", "０")
+            //    .Replace("1", "１")
+            //    .Replace("2", "２")
+            //    .Replace("3", "３")
+            //    .Replace("4", "４")
+            //    .Replace("5", "５")
+            //    .Replace("6", "６")
+            //    .Replace("7", "７")
+            //    .Replace("8", "８")
+            //    .Replace("9", "９")
+            //    .Replace("?", "？")
+            //    .Replace("&", "&amp;");
+            var baseText = line
+                .Replace("0", "〇")
+                .Replace("1", "一")
+                .Replace("2", "二")
+                .Replace("3", "三")
+                .Replace("4", "四")
+                .Replace("5", "五")
+                .Replace("6", "六")
+                .Replace("7", "七")
+                .Replace("8", "八")
+                .Replace("9", "九")
+                .Replace("０", "〇")
+                .Replace("１", "一")
+                .Replace("２", "二")
+                .Replace("３", "三")
+                .Replace("４", "四")
+                .Replace("５", "五")
+                .Replace("６", "六")
+                .Replace("７", "七")
+                .Replace("８", "八")
+                .Replace("９", "九")
                 .Replace("?", "？")
-                .Replace("&", "&amp;");
+                .Replace(",", "、")
+                .Replace("，", "、")
+                .Replace("!", "！")
+                .Replace("?", "？")
+                .Replace("&", "&amp;")
+                .Replace("！！", "<span class=\"tcy\">!! </span>")
+                .Replace("！？", "<span class=\"tcy\">!? </span>")
+                .Replace("？？", "<span class=\"tcy\">?? </span>")
+                .Replace(" 」", "」")
+                .Replace(" 』", "』")
+                ;
+
+
+
+            baseText = baseText.Replace("［＃丸傍点］","<ruby>");
+            baseText = baseText.Replace("［＃丸傍点終わり］", "<rt>・</rt></ruby>");
+            
+
+            //if (!skipEnd && !baseText.EndsWith("。")) {
+            //    if (baseText.EndsWith("」") ||
+            //        baseText.EndsWith("』") ||
+            //        baseText.EndsWith("！") ||
+            //        baseText.EndsWith("？") ||
+            //        baseText.EndsWith("＞") ||
+            //        baseText.EndsWith("◇"))
+            //        {
+            //        // nop
+            //    } else {
+            //        baseText = baseText + "。";
+            //    }
+            //}
+   
+            return baseText;
         }
         #endregion
 
